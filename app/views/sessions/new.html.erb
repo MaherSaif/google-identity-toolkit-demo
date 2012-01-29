@@ -1,0 +1,41 @@
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/googleapis/0.0.4/googleapis.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/jsapi"></script>
+<script type="text/javascript">
+  google.load("identitytoolkit", "1", {packages: ["ac"], language:"en"});
+</script>
+<script type="text/javascript">
+  $(function() {
+    window.google.identitytoolkit.setConfig({
+        developerKey: "AIzaSyDGn4SeG7MPo9NB8sV0PPAMsnfBiaQ7iSQ",
+        companyName: "Demos",
+        callbackUrl: "http://google-identity-demo.dev/idp_callback",
+        realm: "",
+        userStatusUrl: "/status",
+        loginUrl: "/login",
+        signupUrl: "/signup",
+        homeUrl: "/",
+        logoutUrl: "/logout",
+        idps: ["Gmail", "Yahoo"],
+        tryFederatedFirst: true,
+        useCachedUserStatus: false
+    });
+    $("#navbar").accountChooser();
+  });
+</script>
+<!-- Insert the navbar element somewhere in the HTML page -->
+<div id="navbar"></div>
+
+
+
+<%= form_tag sessions_path do %>
+  <div class="field">
+    <%= label_tag :email %>
+    <%= text_field_tag :email, params[:email] %>
+  </div>
+  <div class="field">
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </div>
+  <div class="actions"><%= submit_tag "Log in" %></div>
+<% end %>
