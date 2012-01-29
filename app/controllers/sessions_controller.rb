@@ -2,7 +2,7 @@ require 'uri'
 # require 'restclient' # https://github.com/archiloque/rest-client
 
 class SessionsController < ApplicationController
-	GOOGLE_DEVELOPER_KEY = "AIzaSyDGn4SeG7MPo9NB8sV0PPAMsnfBiaQ7iSQ"
+	GOOGLE_DEVELOPER_KEY = Rails.env.development? "AIzaSyDGn4SeG7MPo9NB8sV0PPAMsnfBiaQ7iSQ" : "AIzaSyCnqgWR93wn2uCSvRf8cp1nRtTjRBtosLg"
 
   def new
   end
