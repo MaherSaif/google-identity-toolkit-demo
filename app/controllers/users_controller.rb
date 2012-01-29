@@ -24,8 +24,9 @@ class UsersController < ApplicationController
 
   def status
     email = params[:email]
-    # search for it
-  	render json: {:registered => true}
+    respond_to do |format|
+      format.json { render json: {:registered => true} }
+    end
   end
 
 end

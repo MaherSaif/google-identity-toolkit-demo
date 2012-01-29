@@ -4,6 +4,31 @@
 <script type="text/javascript">
   google.load("identitytoolkit", "1", {packages: ["ac"], language:"en"});
 </script>
+
+<%= if Rails.env.produciton? %>
+
+<script type="text/javascript">
+  $(function() {
+    window.google.identitytoolkit.setConfig({
+        developerKey: "AIzaSyCnqgWR93wn2uCSvRf8cp1nRtTjRBtosLg",
+        companyName: "Demos",
+        callbackUrl: "http://google-identity-demo.herokuapp.com/idp_callback",
+        realm: "",
+        userStatusUrl: "/status",
+        loginUrl: "/login",
+        signupUrl: "/signup",
+        homeUrl: "/",
+        logoutUrl: "/logout",
+        idps: ["Gmail", "Yahoo"],
+        tryFederatedFirst: true,
+        useCachedUserStatus: false
+    });
+    $("#navbar").accountChooser();
+  });
+</script>
+
+<% else %>
+
 <script type="text/javascript">
   $(function() {
     window.google.identitytoolkit.setConfig({
@@ -23,6 +48,8 @@
     $("#navbar").accountChooser();
   });
 </script>
+
+<% end %>
 <!-- Insert the navbar element somewhere in the HTML page -->
 <div id="navbar"></div>
 
