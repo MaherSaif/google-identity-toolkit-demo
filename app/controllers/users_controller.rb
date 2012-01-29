@@ -2,7 +2,6 @@ class UsersController < ApplicationController
 	before_filter :require_login, :only => :secret
 
 	def index
-		
 	end
 	
   def new
@@ -19,10 +18,9 @@ class UsersController < ApplicationController
   end
 
   def secret
-  	
   end
 
-  def status
+  def get_status
     email = params[:email]
     respond_to do |format|
       format.json { render json: {:registered => true} }

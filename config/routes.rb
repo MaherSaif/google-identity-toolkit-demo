@@ -3,7 +3,7 @@ GoogleIdentityDemo::Application.routes.draw do
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
   post 'idp_callback' => "sessions#idp_callback", :as => "idp_callback"
-  post 'status' => "users#status", :as => "status"
+  post 'get_status' => "users#get_status", :as => "get_status"
 
   resources :users do
     get "secret"
